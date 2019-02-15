@@ -15,13 +15,13 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
     @IBOutlet weak var calendarMenuView: CVCalendarMenuView!
     @IBOutlet weak var monthLabel: UILabel!
     
-    private var randomNumberOfDotMarkersForDay = [Int]()
+    private var eventDays = [Int]()
     private var shouldShowDaysOut = true
     private var animationFinished = true
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
     
-
+    private var mockModelDict = Dictionary<String, [MockModel]>()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,24 +32,35 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            let datas = try JSONDecoder().decode([MockModel].self, from: data)
-            print(datas)
+            let models = try JSONDecoder().decode([MockModel].self, from: data)
+            var mockModels = models.sorted(by: { (l, r) -> Bool in
+                var leftModel = l
+                var rightModel = r
+                
+                return leftModel.startDate.timeIntervalSince1970 < rightModel.startDate.timeIntervalSince1970
+            })
+            
+            for i in mockModels.indices {
+                let key = DateUtil.generateKey(date: mockModels[i].startDate)
+                if self.mockModelDict[key] == nil {
+                    self.mockModelDict[key] = [MockModel]()
+                }
+                
+                self.mockModelDict[key]?.append(mockModels[i])
+            }
         }
         catch {
             assert(false, "Error mock.json parse")
         }
         
-        // Appearance delegate [Unnecessary]
-        self.calendarView.calendarAppearanceDelegate = self
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        components.month = 11
+        components.year = 2017
+        let date = Calendar.current.date(from: components)
+        self.currentCalendar = Calendar.current
         
-        // Animator delegate [Unnecessary]
-        self.calendarView.animatorDelegate = self
-        
-        // Menu delegate [Required]
-        self.calendarMenuView.menuViewDelegate = self
-        
-        // Calendar delegate [Required]
-        self.calendarView.calendarDelegate = self
+        // change 2017-11-01
+        self.calendarView.toggleViewWithDate(date!)
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,15 +70,27 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         calendarView.commitCalendarViewUpdate()
     }
 
-    /*
-    // MARK: - Navigation
+/*    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+*/
+    func didSelectDayView(_ dayView: CVCalendarDayView, animationDidFinish: Bool) {
+        selectedDay = dayView
+        
+        let identifier = "\(EventViewController.self)"
+        guard let eventViewController = UIStoryboard.init(name: "Event", bundle: nil).instantiateViewController(withIdentifier: identifier) as? EventViewController else {
+            return
+        }
+        
+        eventViewController.modalPresentationStyle = .overCurrentContext
+        eventViewController.eventDate = self.selectedDay.date.convertedDate()
+        eventViewController.mockModelDict = self.mockModelDict
+        self.present(eventViewController, animated: true, completion: nil)
+    }
 
     func presentationMode() -> CalendarMode {
         return CalendarMode.monthView
@@ -77,6 +100,105 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         return Weekday.sunday
     }
     
+    @IBAction func touchedPreviousButton(_ sender: Any) {
+        self.calendarView.loadPreviousView()
+    }
+    
+    @IBAction func touchedNextButton(_ sender: Any) {
+        self.calendarView.loadNextView()
+    }
+    
+    func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
+        var shouldDisplay = false
+        let key = DateUtil.generateKey(date: dayView.date.convertedDate())
+        if self.mockModelDict[key] != nil {
+            shouldDisplay = true
+        }
+        
+        return shouldDisplay
+    }
+    
+
+/* 이 부분부터는 오픈 소스 코드 입니다. */
+/* 이 부분부터는 오픈 소스 코드 입니다. */
+/* 이 부분부터는 오픈 소스 코드 입니다. */
+
+    func presentedDateUpdated(_ date: CVDate) {
+        if monthLabel.text != date.globalDescription && self.animationFinished {
+            let updatedMonthLabel = UILabel()
+            updatedMonthLabel.textColor = monthLabel.textColor
+            updatedMonthLabel.font = monthLabel.font
+            updatedMonthLabel.textAlignment = .center
+            updatedMonthLabel.text = date.globalDescription
+            updatedMonthLabel.sizeToFit()
+            updatedMonthLabel.alpha = 0
+            updatedMonthLabel.center = self.monthLabel.center
+            
+            let offset = CGFloat(48)
+            updatedMonthLabel.transform = CGAffineTransform(translationX: 0, y: offset)
+            updatedMonthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
+            
+            UIView.animate(withDuration: 0.35, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                self.animationFinished = false
+                self.monthLabel.transform = CGAffineTransform(translationX: 0, y: -offset)
+                self.monthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
+                self.monthLabel.alpha = 0
+                
+                updatedMonthLabel.alpha = 1
+                updatedMonthLabel.transform = CGAffineTransform.identity
+                
+            }) { _ in
+                
+                self.animationFinished = true
+                self.monthLabel.frame = updatedMonthLabel.frame
+                self.monthLabel.text = updatedMonthLabel.text
+                self.monthLabel.transform = CGAffineTransform.identity
+                self.monthLabel.alpha = 1
+                updatedMonthLabel.removeFromSuperview()
+            }
+            
+            self.view.insertSubview(updatedMonthLabel, aboveSubview: self.monthLabel)
+        }
+    }
+    
+    func supplementaryView(viewOnDayView dayView: DayView) -> UIView {
+        
+        dayView.setNeedsLayout()
+        dayView.layoutIfNeeded()
+        
+        let π = Double.pi
+        
+        let ringLayer = CAShapeLayer()
+        let ringLineWidth: CGFloat = 4.0
+        let ringLineColour = DefaultTheme.circleColor
+        
+        let newView = UIView(frame: dayView.frame)
+        
+        let diameter = (min(newView.bounds.width, newView.bounds.height))
+        let radius = diameter / 2.0 - ringLineWidth
+        
+        newView.layer.addSublayer(ringLayer)
+        
+        ringLayer.fillColor = nil
+        ringLayer.lineWidth = ringLineWidth
+        ringLayer.strokeColor = ringLineColour.cgColor
+        
+        let centrePoint = CGPoint(x: newView.bounds.width/2.0, y: newView.bounds.height/2.0)
+        let startAngle = CGFloat(-π/2.0)
+        let endAngle = CGFloat(π * 2.0) + startAngle
+        let ringPath = UIBezierPath(arcCenter: centrePoint,
+                                    radius: radius,
+                                    startAngle: startAngle,
+                                    endAngle: endAngle,
+                                    clockwise: true)
+        
+        ringLayer.path = ringPath.cgPath
+        ringLayer.frame = newView.layer.bounds
+        
+        return newView
+    }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool { return false }
 }
 
 extension MainViewController: CVCalendarViewAppearanceDelegate {
@@ -146,7 +268,6 @@ extension MainViewController {
     func didShowPreviousWeekView(from startDayView: DayView, to endDayView: DayView) {
         print("Showing Week: from \(startDayView.date.day) to \(endDayView.date.day)")
     }
-    
 }
 
 
