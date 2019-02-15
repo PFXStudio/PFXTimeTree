@@ -1,0 +1,6 @@
+framework module Pods_PFXTimeTreeUITests {
+  umbrella header "Pods-PFXTimeTreeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
