@@ -2,8 +2,7 @@
 
 
 # Screenshots
-![Main screen](Calendar.png) ![Menu closed](/screenshots/menu_closed.png) ![Menu default opened](/screenshots/menu_default_opened.png) ![Menu custom opened](/screenshots/menu_custom_opened.png) ![Menu mini opened](/screenshots/menu_mini_opened.png) ![Menu right opened](/screenshots/menu_right_opened.png) ![Menu down opened](/screenshots/menu_down_opened.png) ![Progress background](/screenshots/progress_background.png) ![Progress no background](/screenshots/progress_no_background.png)
-
+![Calendar screen](1. Calendar.png) ![EventListing Screen](2. EventListing.png) ![Conflict Event Screen](3. ConflictEventNotice.png) ![Conflict EventListing Screen](4. InConflictEvent.png) ![Regist Event Screen](5. RegistEvent.png) ![Registed Event Screen](6. RegistEventList.png)
 
 
 ### 프로젝트 설명
