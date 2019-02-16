@@ -1,5 +1,11 @@
 # PFXTimeTree
 
+
+# Screenshots
+![Main screen](Calendar.png) ![Menu closed](/screenshots/menu_closed.png) ![Menu default opened](/screenshots/menu_default_opened.png) ![Menu custom opened](/screenshots/menu_custom_opened.png) ![Menu mini opened](/screenshots/menu_mini_opened.png) ![Menu right opened](/screenshots/menu_right_opened.png) ![Menu down opened](/screenshots/menu_down_opened.png) ![Progress background](/screenshots/progress_background.png) ![Progress no background](/screenshots/progress_no_background.png)
+
+
+
 ### 프로젝트 설명
 * 폴더 별 파일순서로 설명 기재
 
