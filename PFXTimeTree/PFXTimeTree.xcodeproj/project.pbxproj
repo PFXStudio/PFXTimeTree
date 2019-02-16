@@ -16,6 +16,7 @@
 		6D2DE0AF221792C5008ABDA4 /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */; };
 		6D2DE0B1221792F1008ABDA4 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = 6D2DE0B0221792F1008ABDA4 /* Supporting Files */; };
 		6D2DE0B42217B197008ABDA4 /* EventRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0B32217B197008ABDA4 /* EventRegistViewController.swift */; };
+		6D2DE0B72217D15F008ABDA4 /* DefineStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0B62217D15F008ABDA4 /* DefineStrings.swift */; };
 		6D4C3B342216CDFB001D8D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */; };
 		6D4C3B392216CDFB001D8D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4C3B372216CDFB001D8D44 /* Main.storyboard */; };
 		6D4C3B3C2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B3A2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld */; };
@@ -62,6 +63,7 @@
 		6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Custom.m"; sourceTree = "<group>"; };
 		6D2DE0B0221792F1008ABDA4 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		6D2DE0B32217B197008ABDA4 /* EventRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRegistViewController.swift; sourceTree = "<group>"; };
+		6D2DE0B62217D15F008ABDA4 /* DefineStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineStrings.swift; sourceTree = "<group>"; };
 		6D4C3B302216CDFB001D8D44 /* PFXTimeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFXTimeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D4C3B382216CDFB001D8D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -169,6 +171,14 @@
 			path = MainViews;
 			sourceTree = "<group>";
 		};
+		6D2DE0B52217D14E008ABDA4 /* Defines */ = {
+			isa = PBXGroup;
+			children = (
+				6D2DE0B62217D15F008ABDA4 /* DefineStrings.swift */,
+			);
+			path = Defines;
+			sourceTree = "<group>";
+		};
 		6D4C3B272216CDFB001D8D44 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				6D2DE0AB221792B4008ABDA4 /* Customs */,
+				6D2DE0B52217D14E008ABDA4 /* Defines */,
 				6D2DE0A522178303008ABDA4 /* Extensions */,
 				6D2DE0A8221789E3008ABDA4 /* Managers */,
 				6DA0B4432216CF27001423A9 /* Models */,
@@ -548,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D2DE0B72217D15F008ABDA4 /* DefineStrings.swift in Sources */,
 				6DE1F6CD22170C7E0058B87D /* EventTableViewCell.swift in Sources */,
 				6DA0B46022170638001423A9 /* EventTableViewController.swift in Sources */,
 				6D4C3B3C2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld in Sources */,

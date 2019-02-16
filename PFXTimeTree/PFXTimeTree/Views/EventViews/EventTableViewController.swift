@@ -23,7 +23,7 @@ class EventTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // RxSwift를 활용해 보고 싶은 부분입니다.
-        NotificationCenter.default.addObserver(self, selector: #selector(changedEventModels(_ :)), name: NSNotification.Name(rawValue: "updateEvents"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changedEventModels(_ :)), name: NSNotification.Name(rawValue: DefineStrings.kUpdateEventNotification), object: nil)
     }
     
     @objc func changedEventModels(_ n:Any) {

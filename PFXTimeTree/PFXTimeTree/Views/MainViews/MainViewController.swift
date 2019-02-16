@@ -36,7 +36,7 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         self.calendarView.toggleViewWithDate(date!)
         
         // RxSwift를 활용해 보고 싶은 부분입니다.
-        NotificationCenter.default.addObserver(self, selector: #selector(changedEventModels(_ :)), name: NSNotification.Name(rawValue: "updateEvents"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changedEventModels(_ :)), name: NSNotification.Name(rawValue: DefineStrings.kUpdateEventNotification), object: nil)
     }
     
     @objc func changedEventModels(_ n:Any) {
@@ -98,7 +98,6 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         
         return shouldDisplay
     }
-    
 
 /* 이 부분부터는 오픈 소스 코드 입니다. */
 /* 이 부분부터는 오픈 소스 코드 입니다. */
@@ -251,4 +250,6 @@ extension MainViewController {
     }
 }
 
-
+/* 이 부분까지 오픈 소스 코드 입니다. */
+/* 이 부분까지 오픈 소스 코드 입니다. */
+/* 이 부분까지 오픈 소스 코드 입니다. */

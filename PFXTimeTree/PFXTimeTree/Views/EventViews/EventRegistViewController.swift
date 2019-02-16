@@ -28,6 +28,11 @@ class EventRegistViewController: UIViewController {
         self.titleTextField.title = NSLocalizedString("title", comment: "")
         self.startTimeButton.setTitle(NSLocalizedString("startTimeButtonTitle", comment: ""), for: .normal)
         self.endTimeButton.setTitle(NSLocalizedString("endTimeButtonTitle", comment: ""), for: .normal)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        self.titleLabel.text = dateFormatter.string(from: self.targetDate)
     }
     
     @IBAction func touchedCancelButton(_ sender: Any) {
@@ -73,8 +78,15 @@ class EventRegistViewController: UIViewController {
             // Your actions here if "Done" clicked...
             let dateformatter = DateFormatter.eventModelDateFormatter
             let date = dateformatter.string(from: datePicker.date)
+            if let endString = self?.eventModelDict["end"] as? String {
+                let endDate = dateformatter.date(from: endString)!
+                if datePicker.date.timeIntervalSince1970 >= endDate.timeIntervalSince1970 {
+                    SwiftProgressHUD.showFail(NSLocalizedString("errorOverEndTime", comment: ""))
+                    return
+                }
+            }
+
             self?.startTimeButton.setTitle(date, for: .normal)
-            
             self?.eventModelDict["start"] = date
         }))
         
@@ -97,8 +109,15 @@ class EventRegistViewController: UIViewController {
             // Your actions here if "Done" clicked...
             let dateformatter = DateFormatter.eventModelDateFormatter
             let date = dateformatter.string(from: datePicker.date)
-            self?.endTimeButton.setTitle(date, for: .normal)
+            if let startString = self?.eventModelDict["start"] as? String {
+                let startDate = dateformatter.date(from: startString)!
+                if datePicker.date.timeIntervalSince1970 <= startDate.timeIntervalSince1970 {
+                    SwiftProgressHUD.showFail(NSLocalizedString("errorBeforeStartTime", comment: ""))
+                    return
+                }
+            }
 
+            self?.endTimeButton.setTitle(date, for: .normal)
             self?.eventModelDict["end"] = date
         }))
         

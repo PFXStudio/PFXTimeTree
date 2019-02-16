@@ -36,7 +36,6 @@ class EventManager: NSObject {
             assert(false, "Error mock.json parse")
         }
         
-        
         self.completedInitialize = true
     }
     
@@ -92,7 +91,7 @@ class EventManager: NSObject {
         }
         
         // RxSwift를 활용해 보고 싶은 부분입니다.
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateEvents"), object: eventModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: DefineStrings.kUpdateEventNotification), object: eventModel)
         return true
     }
     

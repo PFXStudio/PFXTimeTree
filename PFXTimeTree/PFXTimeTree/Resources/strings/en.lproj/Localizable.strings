@@ -19,5 +19,7 @@
 
 "errorConflictEvents" = "You have a conflict events.\ncheck red mark event.";
 "errorTitle" = "Input event title.";
+"errorOverEndTime" = "Over end time.";
+"errorBeforeStartTime" = "Before start time.";
 
 "successRegisted" = "Success Registed.";

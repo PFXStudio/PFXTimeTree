@@ -57,8 +57,7 @@ class EventTableViewCell: UITableViewCell {
             self.conflictLabel.backgroundColor = DefaultTheme.conflictColor
         }
 
-        self.startTimeLabel.text = String("\(startAm) \(startHour):\(model.startMinute)") + (model.startMinute == 0 ? "0" : "")
-        self.endTimeLabel.text = String("\(endAm) \(endHour):\(model.endMinute)") + (model.endMinute == 0 ? "0" : "")
+        self.startTimeLabel.text = String("\(startAm) \(startHour):\(model.startMinute < 10 ? "0" : "")\(model.startMinute)")
+        self.endTimeLabel.text = String("\(endAm) \(endHour):\(model.endMinute < 10 ? "0" : "")\(model.endMinute)")
     }
-
 }
