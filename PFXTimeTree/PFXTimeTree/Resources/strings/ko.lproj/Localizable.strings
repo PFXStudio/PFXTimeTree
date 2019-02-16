@@ -20,6 +20,6 @@
 "errorConflictEvents" = "중복 일정이 존재합니다.\n빨간색 표시 일정을 확인 해 주세요.";
 "errorTitle" = "제목을 입력 해 주세요.";
 "errorOverEndTime" = "종료 시간보다 클 순 없습니다.";
-"errorBeforeStartTime" = "시간 시간보다 이전 일 순 없습니다.";
+"errorBeforeStartTime" = "시작 시간보다 이전 일 순 없습니다.";
 
 "successRegisted" = "등록 되었습니다.";
