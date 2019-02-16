@@ -16,5 +16,13 @@ extension DateFormatter {
 
         return formatter
     }()
+
+    static let registEventModelDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. MM. dd. a h:mm"
+        formatter.locale = Locale(identifier: "en")
+
+        return formatter
+    }()
 }
 

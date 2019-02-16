@@ -50,6 +50,23 @@ class EventViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func touchedAddButton(_ sender: Any) {
+        let identifier = "\(EventRegistViewController.self)"
+        guard let eventRegistViewController = UIStoryboard.init(name: "Event", bundle: nil).instantiateViewController(withIdentifier: identifier) as? EventRegistViewController else {
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .short
+        
+        let dateString = dateFormatter.string(from: self.eventDate!)
+        
+        eventRegistViewController.targetDate = dateFormatter.date(from: dateString)!
+        eventRegistViewController.modalPresentationStyle = .overCurrentContext
+        self.present(eventRegistViewController, animated: true, completion: nil)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -57,10 +74,7 @@ class EventViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let destination = segue.destination as? EventTableViewController {
-            if let eventModels = EventManager.shared.eventModels(date: self.eventDate) {
-                destination.eventModels = eventModels
-            }
+            destination.key = EventManager.generateKey(date: self.eventDate)
         }
     }
-
 }

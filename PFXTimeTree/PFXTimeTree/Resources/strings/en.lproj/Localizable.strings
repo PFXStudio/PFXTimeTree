@@ -8,4 +8,16 @@
 
 "am" = "AM";
 "pm" = "PM";
+"titlePlaceholder" = "Input event title.";
+"title" = "Title";
+"startDatePickerTitle" = "Select start event time.";
+"endDatePickerTitle" = "Select end event time.";
+"doneButtonTitle" = "Done";
+"cancelButtonTitle" = "Cancel";
+"defaultStartTimeButtonTitle" = "Start Time";
+"defaultEndTimeButtonTitle" = "End Time";
+
 "errorConflictEvents" = "You have a conflict events.\ncheck red mark event.";
+"errorTitle" = "Input event title.";
+
+"successRegisted" = "Success Registed.";

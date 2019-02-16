@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct EventModel: Decodable {
+struct EventModel: Codable {
     var title = ""
     var startDate: Date
     var endDate: Date

@@ -15,6 +15,7 @@
 		6D2DE0AA221789EE008ABDA4 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0A9221789EE008ABDA4 /* EventManager.swift */; };
 		6D2DE0AF221792C5008ABDA4 /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */; };
 		6D2DE0B1221792F1008ABDA4 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = 6D2DE0B0221792F1008ABDA4 /* Supporting Files */; };
+		6D2DE0B42217B197008ABDA4 /* EventRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0B32217B197008ABDA4 /* EventRegistViewController.swift */; };
 		6D4C3B342216CDFB001D8D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */; };
 		6D4C3B392216CDFB001D8D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4C3B372216CDFB001D8D44 /* Main.storyboard */; };
 		6D4C3B3C2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B3A2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld */; };
@@ -60,6 +61,7 @@
 		6D2DE0AD221792C5008ABDA4 /* UIView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Custom.h"; sourceTree = "<group>"; };
 		6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Custom.m"; sourceTree = "<group>"; };
 		6D2DE0B0221792F1008ABDA4 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
+		6D2DE0B32217B197008ABDA4 /* EventRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRegistViewController.swift; sourceTree = "<group>"; };
 		6D4C3B302216CDFB001D8D44 /* PFXTimeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFXTimeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D4C3B382216CDFB001D8D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				6DE1F6CA221707EA0058B87D /* EventViewController.swift */,
 				6DA0B45F22170638001423A9 /* EventTableViewController.swift */,
 				6DE1F6CC22170C7E0058B87D /* EventTableViewCell.swift */,
+				6D2DE0B32217B197008ABDA4 /* EventRegistViewController.swift */,
 			);
 			path = EventViews;
 			sourceTree = "<group>";
@@ -468,6 +471,10 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProgressHUD/SwiftProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -478,6 +485,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -542,6 +553,7 @@
 				6D4C3B3C2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld in Sources */,
 				6DA0B44B2216DAC8001423A9 /* DefaultTheme.swift in Sources */,
 				6D2DE0AF221792C5008ABDA4 /* UIView+Custom.m in Sources */,
+				6D2DE0B42217B197008ABDA4 /* EventRegistViewController.swift in Sources */,
 				6D2DE0A722178331008ABDA4 /* ExtensionDateFormatter.swift in Sources */,
 				6D2DE0AA221789EE008ABDA4 /* EventManager.swift in Sources */,
 				6DE1F6CB221707EB0058B87D /* EventViewController.swift in Sources */,

@@ -13,6 +13,32 @@ class EventManager: NSObject {
     var timeDict = Dictionary<String, [Int]>()
     
     static let shared = EventManager()
+    var completedInitialize = false
+    
+    func initialize() {
+        guard let path = Bundle.main.path(forResource: "mock", ofType: "json") else {
+            return
+        }
+        
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            let decoder = JSONDecoder()
+            let dateFormatter = DateFormatter.eventModelDateFormatter
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let models = try decoder.decode([EventModel].self, from: data)
+            for i in models.indices {
+                if self.insertEventModel(eventModel: models[i]) == true {
+                    self.checkConflict(eventModel: models[i])
+                }
+            }
+        }
+        catch {
+            assert(false, "Error mock.json parse")
+        }
+        
+        
+        self.completedInitialize = true
+    }
     
     func eventModels(date: Date?) -> [EventModel]? {
         guard let eventDate = date else {
@@ -23,11 +49,12 @@ class EventManager: NSObject {
         return self.dict[key]
     }
 
-    func checkConflict() {
-        self.timeDict.removeAll()
-        // check conflict
+    func checkConflict(eventModel: EventModel) {
         for key in self.dict.keys {
             let eventModels = self.dict[key]!
+            if self.timeDict[key] != nil {
+                self.timeDict[key]?.removeAll()
+            }
             var times = Array(repeating: 0, count: 60 * 24)
 
             for i in 0..<eventModels.count {
@@ -42,6 +69,31 @@ class EventManager: NSObject {
 
             self.timeDict[key] = times
         }
+    }
+    
+    func insertEventModel(eventModel:EventModel) -> Bool{
+        let key = EventManager.generateKey(date: eventModel.startDate)
+        if self.dict[key] == nil {
+            self.dict[key] = [EventModel]()
+        }
+
+        self.dict[key]!.append(eventModel)
+        self.dict[key] = self.dict[key]!.sorted(by: { (l, r) -> Bool in
+            let leftModel = l
+            let rightModel = r
+            
+            return leftModel.startDate.timeIntervalSince1970 < rightModel.startDate.timeIntervalSince1970
+        })
+
+        self.checkConflict(eventModel: eventModel)
+        
+        if self.completedInitialize == false {
+            return true
+        }
+        
+        // RxSwift를 활용해 보고 싶은 부분입니다.
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateEvents"), object: eventModel)
+        return true
     }
     
     static func generateKey(date: Date?) -> String {

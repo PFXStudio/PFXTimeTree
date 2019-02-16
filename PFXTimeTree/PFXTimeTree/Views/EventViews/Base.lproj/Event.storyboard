@@ -54,6 +54,9 @@
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="touchedAddButton:" destination="SPS-Qw-w0h" eventType="touchUpInside" id="O7d-oG-RWN"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,6 +201,138 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MS5-Od-j2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="133.5832083958021"/>
+        </scene>
+        <!--Event Regist View Controller-->
+        <scene sceneID="7SF-ae-Avh">
+            <objects>
+                <viewController storyboardIdentifier="EventRegistViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9mt-dj-526" customClass="EventRegistViewController" customModule="PFXTimeTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jmo-rB-DpF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="SkyFloatingLabelTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wzV-jT-NnF" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="16" y="63" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="F5O-tU-kiM"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="333"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nm-YB-M3C">
+                                <rect key="frame" x="16" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="b5e-AI-sZ9"/>
+                                    <constraint firstAttribute="height" constant="35" id="g92-yd-EhJ"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="touchedCancelButton:" destination="9mt-dj-526" eventType="touchUpInside" id="SCU-RA-j89"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwR-Hw-zXJ">
+                                <rect key="frame" x="324" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BVs-xg-Isr"/>
+                                    <constraint firstAttribute="width" constant="35" id="gEU-HX-vH4"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="V"/>
+                                <connections>
+                                    <action selector="touchedRegistButton:" destination="9mt-dj-526" eventType="touchUpInside" id="r7w-Rm-Yyv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chq-vs-987">
+                                <rect key="frame" x="16" y="101" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="vkf-Ph-F9m"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="startTimeButton"/>
+                                <connections>
+                                    <action selector="touchedStartTimeButton:" destination="9mt-dj-526" eventType="touchUpInside" id="xe3-fR-mMh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3h-NL-dQX">
+                                <rect key="frame" x="16" y="139" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="f5w-c2-11O"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="endTimeButton"/>
+                                <connections>
+                                    <action selector="touchedEndTimeButton:" destination="9mt-dj-526" eventType="touchUpInside" id="hX3-kG-85D"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7l-9P-BdX">
+                                <rect key="frame" x="59" y="27" width="257" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="yro-YL-kWz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Chq-vs-987" firstAttribute="top" secondItem="wzV-jT-NnF" secondAttribute="bottom" constant="8" id="HKU-m1-uWC"/>
+                            <constraint firstItem="wzV-jT-NnF" firstAttribute="leading" secondItem="lUS-Kn-Efj" secondAttribute="leading" constant="16" id="ITt-gt-oWi"/>
+                            <constraint firstItem="u3h-NL-dQX" firstAttribute="leading" secondItem="lUS-Kn-Efj" secondAttribute="leading" constant="16" id="J5i-rp-fH2"/>
+                            <constraint firstItem="5nm-YB-M3C" firstAttribute="leading" secondItem="lUS-Kn-Efj" secondAttribute="leading" constant="16" id="NNh-Ea-K0u"/>
+                            <constraint firstItem="lUS-Kn-Efj" firstAttribute="trailing" secondItem="u3h-NL-dQX" secondAttribute="trailing" constant="16" id="QDC-BM-JJA"/>
+                            <constraint firstItem="u3h-NL-dQX" firstAttribute="top" secondItem="Chq-vs-987" secondAttribute="bottom" constant="8" id="RrH-mq-S3u"/>
+                            <constraint firstItem="Chq-vs-987" firstAttribute="leading" secondItem="lUS-Kn-Efj" secondAttribute="leading" constant="16" id="Y9t-Tq-zCH"/>
+                            <constraint firstItem="dwR-Hw-zXJ" firstAttribute="leading" secondItem="k7l-9P-BdX" secondAttribute="trailing" constant="8" id="alS-f9-qnr"/>
+                            <constraint firstItem="lUS-Kn-Efj" firstAttribute="trailing" secondItem="wzV-jT-NnF" secondAttribute="trailing" constant="16" id="eaW-VU-LY2"/>
+                            <constraint firstItem="k7l-9P-BdX" firstAttribute="top" secondItem="lUS-Kn-Efj" secondAttribute="top" constant="7" id="f2J-9e-qcQ"/>
+                            <constraint firstItem="lUS-Kn-Efj" firstAttribute="trailing" secondItem="dwR-Hw-zXJ" secondAttribute="trailing" constant="16" id="o9L-RA-QJb"/>
+                            <constraint firstItem="k7l-9P-BdX" firstAttribute="leading" secondItem="5nm-YB-M3C" secondAttribute="trailing" constant="8" id="qIB-rY-ygb"/>
+                            <constraint firstItem="5nm-YB-M3C" firstAttribute="top" secondItem="lUS-Kn-Efj" secondAttribute="top" id="szp-gU-CAQ"/>
+                            <constraint firstItem="lUS-Kn-Efj" firstAttribute="trailing" secondItem="Chq-vs-987" secondAttribute="trailing" constant="16" id="tdB-RU-RXp"/>
+                            <constraint firstItem="dwR-Hw-zXJ" firstAttribute="top" secondItem="lUS-Kn-Efj" secondAttribute="top" id="wCz-X2-No7"/>
+                            <constraint firstItem="wzV-jT-NnF" firstAttribute="top" secondItem="5nm-YB-M3C" secondAttribute="bottom" constant="8" id="zwM-Pi-Vmk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lUS-Kn-Efj"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NtJ-Bs-1nH" appends="YES" id="ake-xX-xAq"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="endTimeButton" destination="u3h-NL-dQX" id="4Fh-J5-25T"/>
+                        <outlet property="startTimeButton" destination="Chq-vs-987" id="gM9-gs-HPX"/>
+                        <outlet property="titleLabel" destination="k7l-9P-BdX" id="hn8-Bs-BkM"/>
+                        <outlet property="titleTextField" destination="wzV-jT-NnF" id="5y0-Jp-MnL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HmJ-52-yWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NtJ-Bs-1nH">
+                    <connections>
+                        <action selector="touchedBgndView:" destination="9mt-dj-526" id="F3a-0Y-znW"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1413.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

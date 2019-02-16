@@ -25,39 +25,7 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        guard let path = Bundle.main.path(forResource: "mock", ofType: "json") else {
-            return
-        }
-
-
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            let decoder = JSONDecoder()
-            let dateFormatter = DateFormatter.eventModelDateFormatter
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            let models = try decoder.decode([EventModel].self, from: data)
-            var eventModels = models.sorted(by: { (l, r) -> Bool in
-                let leftModel = l
-                let rightModel = r
-                
-                return leftModel.startDate.timeIntervalSince1970 < rightModel.startDate.timeIntervalSince1970
-            })
-            
-            for i in eventModels.indices {
-                let key = EventManager.generateKey(date: eventModels[i].startDate)
-                if EventManager.shared.dict[key] == nil {
-                    EventManager.shared.dict[key] = [EventModel]()
-                }
-                
-                EventManager.shared.dict[key]?.append(eventModels[i])
-            }
-        }
-        catch {
-            assert(false, "Error mock.json parse")
-        }
-        
-        EventManager.shared.checkConflict()
-        
+        EventManager.shared.initialize()
         var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
         components.month = 11
         components.year = 2017
@@ -66,6 +34,14 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         
         // change 2017-11-01
         self.calendarView.toggleViewWithDate(date!)
+        
+        // RxSwift를 활용해 보고 싶은 부분입니다.
+        NotificationCenter.default.addObserver(self, selector: #selector(changedEventModels(_ :)), name: NSNotification.Name(rawValue: "updateEvents"), object: nil)
+    }
+    
+    @objc func changedEventModels(_ n:Any) {
+        // RxSwift를 활용해 보고 싶은 부분입니다.
+        self.calendarView.contentController.refreshPresentedMonth()
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,6 +68,7 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         }
         
         eventViewController.modalPresentationStyle = .overCurrentContext
+        eventViewController.modalTransitionStyle = .crossDissolve
         eventViewController.eventDate = self.selectedDay.date.convertedDate()
         self.present(eventViewController, animated: true, completion: nil)
     }

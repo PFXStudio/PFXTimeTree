@@ -8,4 +8,16 @@
 
 "am" = "오전";
 "pm" = "오후";
+"titlePlaceholder" = "제목을 입력 해 주세요.";
+"title" = "제목";
+"startDatePickerTitle" = "시작 시간을 선택 해 주세요.";
+"endDatePickerTitle" = "종료 시간을 선택 해 주세요.";
+"doneButtonTitle" = "완료";
+"cancelButtonTitle" = "취소";
+"startTimeButtonTitle" = "시작 시간";
+"endTimeButtonTitle" = "종료 시간";
+
 "errorConflictEvents" = "중복 일정이 존재합니다.\n빨간 표시 일정을 확인 해 주세요.";
+"errorTitle" = "제목을 입력 해 주세요.";
+
+"successRegisted" = "등록 되었습니다.";

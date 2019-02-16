@@ -3,6 +3,12 @@ PODS:
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
   - CVCalendar (1.6.2)
+  - RxAtomic (4.4.1)
+  - RxCocoa (4.4.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
+  - SkyFloatingLabelTextField (3.6.0)
   - SwiftProgressHUD (0.0.7)
   - SwiftyJSON (4.2.0)
 
@@ -10,6 +16,9 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.4)
   - CVCalendar (~> 1.6.2)
+  - RxCocoa
+  - RxSwift
+  - SkyFloatingLabelTextField (~> 3.0)
   - SwiftProgressHUD
   - SwiftyJSON (~> 4.0)
 
@@ -18,6 +27,10 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - CVCalendar
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
+    - SkyFloatingLabelTextField
     - SwiftProgressHUD
     - SwiftyJSON
 
@@ -25,9 +38,13 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   CVCalendar: 515092247b9c5059855643c2a2220f259bd5417f
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
+  SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
   SwiftProgressHUD: 27d2a9fb4e9f356dbbbfd98477916652cc9b7ac1
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 104cbaa8861e6bbfc14427392cbe6ebd66b6e159
+PODFILE CHECKSUM: 87fcecf84f505bf40a88fa688b101b3c18e9f7b1
 
 COCOAPODS: 1.5.3

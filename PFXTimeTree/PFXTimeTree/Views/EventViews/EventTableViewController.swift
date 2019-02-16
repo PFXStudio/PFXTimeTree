@@ -11,7 +11,7 @@ import SwiftProgressHUD
 
 class EventTableViewController: UITableViewController {
     
-    var eventModels = [EventModel]()
+    var key = ""
 
     static let cellIdentifier = "\(EventTableViewCell.self)"
     override func viewDidLoad() {
@@ -22,12 +22,23 @@ class EventTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // RxSwift를 활용해 보고 싶은 부분입니다.
+        NotificationCenter.default.addObserver(self, selector: #selector(changedEventModels(_ :)), name: NSNotification.Name(rawValue: "updateEvents"), object: nil)
+    }
+    
+    @objc func changedEventModels(_ n:Any) {
+        // RxSwift를 활용해 보고 싶은 부분입니다.
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func viewWillAppear(_ animated: Bool) {
-        for i in self.eventModels.indices {
-            if EventManager.shared.isConflict(eventModel: self.eventModels[i]) == true {
+        guard let eventModels = EventManager.shared.dict[key] else {
+            return
+        }
+        
+        for i in eventModels.indices {
+            if EventManager.shared.isConflict(eventModel: eventModels[i]) == true {
                 SwiftProgressHUD.showInfo(NSLocalizedString("errorConflictEvents", comment: ""))
                 return
             }
@@ -41,7 +52,11 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if self.eventModels.count <= 0 {
+        guard let eventModels = EventManager.shared.dict[key] else {
+            return 0
+        }
+        
+        if eventModels.count <= 0 {
             self.tableView.isHidden = true
             return 0
         }
@@ -54,8 +69,12 @@ class EventTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewController.cellIdentifier, for: indexPath) as? EventTableViewCell else {
             return UITableViewCell()
         }
-        
-        let eventModel = self.eventModels[indexPath.row]
+
+        guard let eventModels = EventManager.shared.dict[key] else {
+            return cell
+        }
+
+        let eventModel = eventModels[indexPath.row]
         cell.update(eventModel: eventModel, conflicted: EventManager.shared.isConflict(eventModel: eventModel))
 
         return cell
