@@ -2,7 +2,7 @@
 
 
 # Screenshots
-![Calendar screen](1. Calendar.png) ![EventListing Screen](2. EventListing.png) ![Conflict Event Screen](3. ConflictEventNotice.png) ![Conflict EventListing Screen](4. InConflictEvent.png) ![Regist Event Screen](5. RegistEvent.png) ![Registed Event Screen](6. RegistEventList.png)
+![Calendar screen](/1. Calendar.png) ![EventListing Screen](/2. EventListing.png) ![Conflict Event Screen](/3. ConflictEventNotice.png) ![Conflict EventListing Screen](/4. InConflictEvent.png) ![Regist Event Screen](/5. RegistEvent.png) ![Registed Event Screen](/6. RegistEventList.png)
 
 
 ### 프로젝트 설명
