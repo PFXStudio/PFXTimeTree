@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import SwiftProgressHUD
 
 class EventTableViewController: UITableViewController {
     
-    var mockModels: [MockModel]?
-    var conflictIndexs: [Int]?
+    var eventModels = [EventModel]()
 
     static let cellIdentifier = "\(EventTableViewCell.self)"
     override func viewDidLoad() {
@@ -22,11 +22,18 @@ class EventTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.conflictIndexs = MockModelChecker().conflictMockModels(mockModels: self.mockModels!)
     }
 
     // MARK: - Table view data source
-
+    override func viewWillAppear(_ animated: Bool) {
+        for i in self.eventModels.indices {
+            if EventManager.shared.isConflict(eventModel: self.eventModels[i]) == true {
+                SwiftProgressHUD.showInfo(NSLocalizedString("errorConflictEvents", comment: ""))
+                return
+            }
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -34,11 +41,13 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        guard let mockModels = self.mockModels else {
+        if self.eventModels.count <= 0 {
+            self.tableView.isHidden = true
             return 0
         }
         
-        return mockModels.count
+        self.tableView.isHidden = false
+        return eventModels.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,15 +55,8 @@ class EventTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let mockModel = self.mockModels![indexPath.row]
-        // todo refactoring
-        cell.update(mockModel: mockModel, conflicted: false)
-        for i in (self.conflictIndexs?.indices)! {
-            if indexPath.row == self.conflictIndexs![i] {
-                cell.update(mockModel: mockModel, conflicted: true)
-                break
-            }
-        }
+        let eventModel = self.eventModels[indexPath.row]
+        cell.update(eventModel: eventModel, conflicted: EventManager.shared.isConflict(eventModel: eventModel))
 
         return cell
     }

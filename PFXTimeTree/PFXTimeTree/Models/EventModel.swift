@@ -1,16 +1,23 @@
 //
-//  MockModel.swift
+//  EventModel.swift
 //  PFXTimeTree
 //
-//  Created by PFXStudio on 2019. 2. 15..
+//  Created by PFXStudio on 2019. 2. 16..
 //  Copyright © 2019년 PFXStudio. All rights reserved.
 //
-import Foundation
 
-struct MockModel: Decodable {
+import UIKit
+
+struct EventModel: Decodable {
     var title = ""
-    var start = ""
-    var end = ""
+    var startDate: Date
+    var endDate: Date
+    enum CodingKeys: String, CodingKey {
+        case title
+        case startDate = "start"
+        case endDate = "end"
+    }
+    
     lazy var startYear: Int = {
         let calendar = Calendar.current
         return calendar.component(.year, from: self.startDate)
@@ -30,7 +37,7 @@ struct MockModel: Decodable {
         let calendar = Calendar.current
         return calendar.component(.hour, from: self.startDate)
     }()
-
+    
     lazy var startMinute: Int = {
         let calendar = Calendar.current
         return calendar.component(.minute, from: self.startDate)
@@ -60,24 +67,11 @@ struct MockModel: Decodable {
         let calendar = Calendar.current
         return calendar.component(.minute, from: self.endDate)
     }()
-
-    lazy var startDate: Date = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy h:mm a"
-        dateFormatter.locale = Locale(identifier: "en")
-        return dateFormatter.date(from: start)!
-    }()
-    
-    lazy var endDate: Date = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy h:mm a"
-        dateFormatter.locale = Locale(identifier: "en")
-        return dateFormatter.date(from: end)!
-    }()
     
     lazy var totalDayMinute: (Int, Int) = {
         let totalStartMin = (self.startHour * 60) + self.startMinute
-        let totalEndMin = (self.endHour * 60) + self.endMinute
+        // End는 그 시간까지 한다는 거기 때문에 1을 빼줌
+        let totalEndMin = (self.endHour * 60) + (self.endMinute - 1)
         return (totalStartMin, totalEndMin)
     }()
     
@@ -86,4 +80,5 @@ struct MockModel: Decodable {
      "start": "November 8, 2017 12:30 PM",
      "end": "November 8, 2017 1:30 PM"
      */
+
 }

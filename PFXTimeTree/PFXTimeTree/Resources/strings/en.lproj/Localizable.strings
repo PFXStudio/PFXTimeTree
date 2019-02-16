@@ -8,3 +8,4 @@
 
 "am" = "AM";
 "pm" = "PM";
+"errorConflictEvents" = "You have a conflict events.\ncheck red mark event.";

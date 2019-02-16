@@ -10,6 +10,11 @@
 		05FB6B59B49F4C56D89A9F15 /* Pods_PFXTimeTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CE47C2EB7665F55218214D /* Pods_PFXTimeTree.framework */; };
 		124498B61C338A7A72B2708F /* Pods_PFXTimeTreeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31373DF529B03F213931590D /* Pods_PFXTimeTreeUITests.framework */; };
 		3B04F658D80C6433BDBF027B /* Pods_PFXTimeTreeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46E853F6FBE46A943CFA0B5 /* Pods_PFXTimeTreeTests.framework */; };
+		6D2DE0A42217814F008ABDA4 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0A32217814F008ABDA4 /* EventModel.swift */; };
+		6D2DE0A722178331008ABDA4 /* ExtensionDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0A622178331008ABDA4 /* ExtensionDateFormatter.swift */; };
+		6D2DE0AA221789EE008ABDA4 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0A9221789EE008ABDA4 /* EventManager.swift */; };
+		6D2DE0AF221792C5008ABDA4 /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */; };
+		6D2DE0B1221792F1008ABDA4 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = 6D2DE0B0221792F1008ABDA4 /* Supporting Files */; };
 		6D4C3B342216CDFB001D8D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */; };
 		6D4C3B392216CDFB001D8D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4C3B372216CDFB001D8D44 /* Main.storyboard */; };
 		6D4C3B3C2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B3A2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld */; };
@@ -18,16 +23,13 @@
 		6D4C3B4C2216CDFB001D8D44 /* PFXTimeTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B4B2216CDFB001D8D44 /* PFXTimeTreeTests.swift */; };
 		6D4C3B572216CDFB001D8D44 /* PFXTimeTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C3B562216CDFB001D8D44 /* PFXTimeTreeUITests.swift */; };
 		6DA0B4412216CF15001423A9 /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 6DA0B4402216CF15001423A9 /* mock.json */; };
-		6DA0B4462216CF42001423A9 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA0B4452216CF42001423A9 /* MockModel.swift */; };
 		6DA0B4482216D836001423A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA0B4472216D836001423A9 /* MainViewController.swift */; };
 		6DA0B44B2216DAC8001423A9 /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA0B44A2216DAC8001423A9 /* DefaultTheme.swift */; };
-		6DA0B4502216FB15001423A9 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA0B44F2216FB15001423A9 /* DateUtil.swift */; };
 		6DA0B46022170638001423A9 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA0B45F22170638001423A9 /* EventTableViewController.swift */; };
 		6DE1F6CB221707EB0058B87D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE1F6CA221707EA0058B87D /* EventViewController.swift */; };
 		6DE1F6CD22170C7E0058B87D /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE1F6CC22170C7E0058B87D /* EventTableViewCell.swift */; };
 		6DE1F6D1221716B60058B87D /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE1F6D3221716B60058B87D /* Event.storyboard */; };
 		6DE1F6D7221716D70058B87D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DE1F6D9221716D70058B87D /* Localizable.strings */; };
-		6DE1F6DD221723300058B87D /* MockModelChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE1F6DC221723300058B87D /* MockModelChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,12 @@
 		31373DF529B03F213931590D /* Pods_PFXTimeTreeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFXTimeTreeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C0617A8C09F448DD1EDC1 /* Pods-PFXTimeTreeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFXTimeTreeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFXTimeTreeUITests/Pods-PFXTimeTreeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		631D1FF73EB433EF0286B4E3 /* Pods-PFXTimeTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFXTimeTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFXTimeTree/Pods-PFXTimeTree.debug.xcconfig"; sourceTree = "<group>"; };
+		6D2DE0A32217814F008ABDA4 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		6D2DE0A622178331008ABDA4 /* ExtensionDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDateFormatter.swift; sourceTree = "<group>"; };
+		6D2DE0A9221789EE008ABDA4 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		6D2DE0AD221792C5008ABDA4 /* UIView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Custom.h"; sourceTree = "<group>"; };
+		6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Custom.m"; sourceTree = "<group>"; };
+		6D2DE0B0221792F1008ABDA4 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		6D4C3B302216CDFB001D8D44 /* PFXTimeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFXTimeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D4C3B382216CDFB001D8D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,10 +74,8 @@
 		6D4C3B562216CDFB001D8D44 /* PFXTimeTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFXTimeTreeUITests.swift; sourceTree = "<group>"; };
 		6D4C3B582216CDFB001D8D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DA0B4402216CF15001423A9 /* mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
-		6DA0B4452216CF42001423A9 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
 		6DA0B4472216D836001423A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6DA0B44A2216DAC8001423A9 /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
-		6DA0B44F2216FB15001423A9 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		6DA0B45F22170638001423A9 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		6DE1F6CA221707EA0058B87D /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		6DE1F6CC22170C7E0058B87D /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,7 +85,6 @@
 		6DE1F6D6221716C60058B87D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6DE1F6D8221716D70058B87D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6DE1F6DA221716DB0058B87D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6DE1F6DC221723300058B87D /* MockModelChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModelChecker.swift; sourceTree = "<group>"; };
 		789437899BD85CBB75DCB015 /* Pods-PFXTimeTreeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFXTimeTreeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFXTimeTreeTests/Pods-PFXTimeTreeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACDB9B0843CC86C541716D97 /* Pods-PFXTimeTreeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFXTimeTreeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFXTimeTreeUITests/Pods-PFXTimeTreeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B30766C81BCA18C1B90B09D8 /* Pods-PFXTimeTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFXTimeTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFXTimeTree/Pods-PFXTimeTree.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +133,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6D2DE0A522178303008ABDA4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6D2DE0A622178331008ABDA4 /* ExtensionDateFormatter.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6D2DE0A8221789E3008ABDA4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6D2DE0A9221789EE008ABDA4 /* EventManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		6D2DE0AB221792B4008ABDA4 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				6D2DE0AD221792C5008ABDA4 /* UIView+Custom.h */,
+				6D2DE0AE221792C5008ABDA4 /* UIView+Custom.m */,
+			);
+			path = Customs;
+			sourceTree = "<group>";
+		};
+		6D2DE0B22217A14F008ABDA4 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				6D4C3B372216CDFB001D8D44 /* Main.storyboard */,
+				6DA0B4472216D836001423A9 /* MainViewController.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
 		6D4C3B272216CDFB001D8D44 = {
 			isa = PBXGroup;
 			children = (
@@ -153,14 +192,15 @@
 		6D4C3B322216CDFB001D8D44 /* PFXTimeTree */ = {
 			isa = PBXGroup;
 			children = (
-				6DE1F6DB221723110058B87D /* Checkers */,
-				6DA0B44E2216FB05001423A9 /* Utils */,
-				6DA0B4492216DAA4001423A9 /* Themes */,
+				6D2DE0AB221792B4008ABDA4 /* Customs */,
+				6D2DE0A522178303008ABDA4 /* Extensions */,
+				6D2DE0A8221789E3008ABDA4 /* Managers */,
 				6DA0B4432216CF27001423A9 /* Models */,
-				6DA0B4442216CF2E001423A9 /* Views */,
 				6DA0B43E2216CEFD001423A9 /* Resources */,
+				6D2DE0B0221792F1008ABDA4 /* Supporting Files */,
+				6DA0B4492216DAA4001423A9 /* Themes */,
+				6DA0B4442216CF2E001423A9 /* Views */,
 				6D4C3B332216CDFB001D8D44 /* AppDelegate.swift */,
-				6D4C3B372216CDFB001D8D44 /* Main.storyboard */,
 				6D4C3B3D2216CDFB001D8D44 /* Assets.xcassets */,
 				6D4C3B3F2216CDFB001D8D44 /* LaunchScreen.storyboard */,
 				6D4C3B422216CDFB001D8D44 /* Info.plist */,
@@ -207,7 +247,7 @@
 		6DA0B4432216CF27001423A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6DA0B4452216CF42001423A9 /* MockModel.swift */,
+				6D2DE0A32217814F008ABDA4 /* EventModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,8 +255,8 @@
 		6DA0B4442216CF2E001423A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6D2DE0B22217A14F008ABDA4 /* MainViews */,
 				6DA0B45C22170625001423A9 /* EventViews */,
-				6DA0B4472216D836001423A9 /* MainViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,14 +267,6 @@
 				6DA0B44A2216DAC8001423A9 /* DefaultTheme.swift */,
 			);
 			path = Themes;
-			sourceTree = "<group>";
-		};
-		6DA0B44E2216FB05001423A9 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				6DA0B44F2216FB15001423A9 /* DateUtil.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		6DA0B45C22170625001423A9 /* EventViews */ = {
@@ -254,14 +286,6 @@
 				6DE1F6D9221716D70058B87D /* Localizable.strings */,
 			);
 			path = strings;
-			sourceTree = "<group>";
-		};
-		6DE1F6DB221723110058B87D /* Checkers */ = {
-			isa = PBXGroup;
-			children = (
-				6DE1F6DC221723300058B87D /* MockModelChecker.swift */,
-			);
-			path = Checkers;
 			sourceTree = "<group>";
 		};
 		D8F89105EDBFD6098EA875F9 /* Frameworks */ = {
@@ -346,6 +370,7 @@
 				TargetAttributes = {
 					6D4C3B2F2216CDFB001D8D44 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					6D4C3B462216CDFB001D8D44 = {
 						CreatedOnToolsVersion = 10.1;
@@ -382,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D2DE0B1221792F1008ABDA4 /* Supporting Files in Resources */,
 				6D4C3B412216CDFB001D8D44 /* LaunchScreen.storyboard in Resources */,
 				6DE1F6D7221716D70058B87D /* Localizable.strings in Resources */,
 				6D4C3B3E2216CDFB001D8D44 /* Assets.xcassets in Resources */,
@@ -512,15 +538,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DE1F6CD22170C7E0058B87D /* EventTableViewCell.swift in Sources */,
-				6DA0B4462216CF42001423A9 /* MockModel.swift in Sources */,
 				6DA0B46022170638001423A9 /* EventTableViewController.swift in Sources */,
 				6D4C3B3C2216CDFB001D8D44 /* PFXTimeTree.xcdatamodeld in Sources */,
 				6DA0B44B2216DAC8001423A9 /* DefaultTheme.swift in Sources */,
-				6DA0B4502216FB15001423A9 /* DateUtil.swift in Sources */,
+				6D2DE0AF221792C5008ABDA4 /* UIView+Custom.m in Sources */,
+				6D2DE0A722178331008ABDA4 /* ExtensionDateFormatter.swift in Sources */,
+				6D2DE0AA221789EE008ABDA4 /* EventManager.swift in Sources */,
 				6DE1F6CB221707EB0058B87D /* EventViewController.swift in Sources */,
+				6D2DE0A42217814F008ABDA4 /* EventModel.swift in Sources */,
 				6D4C3B342216CDFB001D8D44 /* AppDelegate.swift in Sources */,
 				6DA0B4482216D836001423A9 /* MainViewController.swift in Sources */,
-				6DE1F6DD221723300058B87D /* MockModelChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +745,7 @@
 			baseConfigurationReference = 631D1FF73EB433EF0286B4E3 /* Pods-PFXTimeTree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7HRPNLU6RA;
 				INFOPLIST_FILE = PFXTimeTree/Info.plist;
@@ -727,6 +755,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfxstudio.PFXTimeTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PFXTimeTree/Supporting Files/PFXTimeTree-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -737,6 +767,7 @@
 			baseConfigurationReference = B30766C81BCA18C1B90B09D8 /* Pods-PFXTimeTree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7HRPNLU6RA;
 				INFOPLIST_FILE = PFXTimeTree/Info.plist;
@@ -746,6 +777,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfxstudio.PFXTimeTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PFXTimeTree/Supporting Files/PFXTimeTree-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

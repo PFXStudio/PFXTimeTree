@@ -10,10 +10,11 @@ import UIKit
 
 class EventViewController: UIViewController {
     
-    var mockModelDict = Dictionary<String, [MockModel]>()
     var eventDate: Date?
 
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var bgndView: UIView!
+    @IBOutlet weak var lineLabel: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,21 +22,28 @@ class EventViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillLayoutSubviews() {
-        /*
+    override func viewWillAppear(_ animated: Bool) {
+        self.bgndView.roundLayer(withValue: DefaultTheme.roundValue)
+        self.bgndView.shadow(withValue: DefaultTheme.shadowValue)
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.dateFormat = "yyyy-MM-dd(EEEE)"
-        dateFormatter.string(from: self.eventDate!)
-        self.dateLabel.text = dateFormatter.string(from: self.eventDate!)
- */
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        self.dateLabel.text = dateFormatter.string(from: self.eventDate!)
-
+        /*
+         
+         let dateFormatter = DateFormatter()
+         dateFormatter.locale = Locale(identifier: "ko_kr")
+         dateFormatter.dateFormat = "yyyy-MM-dd(EEEE)"
+         dateFormatter.string(from: self.eventDate!)
+         self.dateLabel.text = dateFormatter.string(from: self.eventDate!)
+         */
+        let localText = self.eventDate?.description(with: Locale(identifier: "ko_KR"))
+        guard let tokens = localText?.components(separatedBy: "오전") else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            self.dateLabel.text = dateFormatter.string(from: self.eventDate!)
+            return
+        }
+        
+        self.dateLabel.text = tokens[0]
     }
     
     @IBAction func touchedBgndButton(_ sender: Any) {
@@ -49,12 +57,9 @@ class EventViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let destination = segue.destination as? EventTableViewController {
-            let key = DateUtil.generateKey(date: self.eventDate)
-            guard let mockModels = self.mockModelDict[key] else {
-                return
+            if let eventModels = EventManager.shared.eventModels(date: self.eventDate) {
+                destination.eventModels = eventModels
             }
-            
-            destination.mockModels = mockModels
         }
     }
 

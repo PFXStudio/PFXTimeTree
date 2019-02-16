@@ -34,10 +34,10 @@ class EventTableViewCell: UITableViewCell {
         self.conflictLabel.backgroundColor = DefaultTheme.validColor
     }
     
-    func update(mockModel: MockModel, conflicted: Bool) {
+    func update(eventModel: EventModel, conflicted: Bool) {
         self.initialize()
         
-        var model = mockModel
+        var model = eventModel
         self.titleLabel.text = model.title
         var startAm = NSLocalizedString("am", comment: "")
         var startHour = model.startHour

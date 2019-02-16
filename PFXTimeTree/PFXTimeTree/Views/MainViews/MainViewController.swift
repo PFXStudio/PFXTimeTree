@@ -21,7 +21,6 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
     private var selectedDay: DayView!
     private var currentCalendar: Calendar?
     
-    private var mockModelDict = Dictionary<String, [MockModel]>()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,29 +28,35 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         guard let path = Bundle.main.path(forResource: "mock", ofType: "json") else {
             return
         }
-        
+
+
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            let models = try JSONDecoder().decode([MockModel].self, from: data)
-            var mockModels = models.sorted(by: { (l, r) -> Bool in
-                var leftModel = l
-                var rightModel = r
+            let decoder = JSONDecoder()
+            let dateFormatter = DateFormatter.eventModelDateFormatter
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let models = try decoder.decode([EventModel].self, from: data)
+            var eventModels = models.sorted(by: { (l, r) -> Bool in
+                let leftModel = l
+                let rightModel = r
                 
                 return leftModel.startDate.timeIntervalSince1970 < rightModel.startDate.timeIntervalSince1970
             })
             
-            for i in mockModels.indices {
-                let key = DateUtil.generateKey(date: mockModels[i].startDate)
-                if self.mockModelDict[key] == nil {
-                    self.mockModelDict[key] = [MockModel]()
+            for i in eventModels.indices {
+                let key = EventManager.generateKey(date: eventModels[i].startDate)
+                if EventManager.shared.dict[key] == nil {
+                    EventManager.shared.dict[key] = [EventModel]()
                 }
                 
-                self.mockModelDict[key]?.append(mockModels[i])
+                EventManager.shared.dict[key]?.append(eventModels[i])
             }
         }
         catch {
             assert(false, "Error mock.json parse")
         }
+        
+        EventManager.shared.checkConflict()
         
         var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
         components.month = 11
@@ -88,7 +93,6 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
         
         eventViewController.modalPresentationStyle = .overCurrentContext
         eventViewController.eventDate = self.selectedDay.date.convertedDate()
-        eventViewController.mockModelDict = self.mockModelDict
         self.present(eventViewController, animated: true, completion: nil)
     }
 
@@ -110,8 +114,8 @@ class MainViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMe
     
     func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
         var shouldDisplay = false
-        let key = DateUtil.generateKey(date: dayView.date.convertedDate())
-        if self.mockModelDict[key] != nil {
+        let key = EventManager.generateKey(date: dayView.date.convertedDate())
+        if EventManager.shared.dict[key] != nil {
             shouldDisplay = true
         }
         
