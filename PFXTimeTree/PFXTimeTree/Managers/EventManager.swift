@@ -49,25 +49,25 @@ class EventManager: NSObject {
     }
 
     func checkConflict(eventModel: EventModel) {
-        for key in self.dict.keys {
-            let eventModels = self.dict[key]!
-            if self.timeDict[key] != nil {
-                self.timeDict[key]?.removeAll()
-            }
-            var times = Array(repeating: 0, count: 60 * 24)
-
-            for i in 0..<eventModels.count {
-                var eventModel = eventModels[i]
-                let (totalStartMin, totalEndMin) = eventModel.totalDayMinute
-                assert(totalStartMin < totalEndMin, "wrong totalEndMin")
-                // 시작 분부터 끝나는 분까지의 값을 키 값으로 하여 배열화 함
-                for x in totalStartMin...totalEndMin {
-                    times[x] = times[x] + 1
-                }
-            }
-
-            self.timeDict[key] = times
+        let key = EventManager.generateKey(date: eventModel.startDate)
+        let eventModels = self.dict[key]!
+        if let _ = self.timeDict[key] {
+            self.timeDict[key]?.removeAll()
         }
+        
+        var times = Array(repeating: 0, count: 60 * 24)
+
+        for i in 0..<eventModels.count {
+            var eventModel = eventModels[i]
+            let (totalStartMin, totalEndMin) = eventModel.totalDayMinute
+            assert(totalStartMin < totalEndMin, "wrong totalEndMin")
+            // 시작 분부터 끝나는 분까지의 값을 키 값으로 하여 배열화 함
+            for x in totalStartMin...totalEndMin {
+                times[x] = times[x] + 1
+            }
+        }
+
+        self.timeDict[key] = times
     }
     
     func insertEventModel(eventModel:EventModel) -> Bool{
